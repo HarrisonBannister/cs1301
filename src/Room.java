@@ -99,7 +99,6 @@ public class Room {
 	 * sometimes without even trying, knowwhatimssayin?
 	 * Yall don't haveta worry 'bout me for this'ere game, but look me up in 
 	 * Chapter 6 sometime. Kay?
-	 *   
 	 */
 	public Room(String description, boolean north, boolean south, boolean east,
 			boolean west, boolean isDark, Lamp theLamp, Key theKey,

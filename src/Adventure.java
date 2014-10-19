@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
 * Adventure.java
 * Author: Harrison Bannister
@@ -26,6 +28,10 @@ public class Adventure {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome to UGA Adventures: Episode 1\n"+
+							"The Adventure of the Cave of Redundancy Adventure"+
+							"By: Harrison Bannister");
 
 	}
 

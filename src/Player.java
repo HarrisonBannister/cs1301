@@ -23,5 +23,15 @@
 */
 
 public class Player {
+	
+	/*
+	 * Instance Variables
+	 */
+	private int xCoord;
+	private int yCoord;
+	
+	private Lamp theLamp;
+	private Key theKey;
+	
 
 }

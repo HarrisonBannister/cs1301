@@ -1,3 +1,4 @@
+import java.lang.String;
 /*
 * Chest.java
 * Author: Harrison Bannister
@@ -24,10 +25,13 @@
 
 public class Chest {
 
-	/*
+	/**
 	 * Instance variables go here, you're responsible for choosing
 	 * which ones are needed and naming them
 	 */
+	private String contents = "lol";
+	private boolean isLocked;
+
 
 	/**
 	 * This method is used by the Map class, you won't need to call it yourself
@@ -47,12 +51,7 @@ public class Chest {
 	 * Should return true if the chest is locked, false otherwise
 	 */
 	public boolean isLocked() {
-	}
-	
-	/**
-	 * Return a string describing the contents of the chest.
-	 */
-	public String getContents() {
+		return isLocked;
 	}
 	
 	/**
@@ -60,8 +59,15 @@ public class Chest {
 	 * this method in your program (though you have to implement it anyway).
 	 */
 	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	
+	/**
+	 * Return a string describing the contents of the chest.
+	 */
+	public String getContents() {
+		return contents;
+	}
 	
 	
 }
