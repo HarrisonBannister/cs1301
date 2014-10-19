@@ -1,5 +1,5 @@
 /*
-* Lamp.java
+* Player.java
 * Author: Harrison Bannister
 * Submission Date: [Submission date here]
 *
@@ -22,12 +22,6 @@
 * of Computer Science at the University of Georgia.
 */
 
-public class Lamp {
+public class Player {
 
-	/*
-	 * Instance variables and methods go here, you're responsible for 
-	 * choosing and naming them.
-	 */
-
-	
 }
