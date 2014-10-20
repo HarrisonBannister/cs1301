@@ -31,9 +31,9 @@
 public class Circle {
 	
 
-	__________________________       // declare the private double instance  radius
-	__________________________       // declare the private double instance  x
-	__________________________       // declare the private double instance  y
+	private double radius;
+	private double x;
+	private double y;
 	
 	//----------------------------------------------
 	// Class Constructor: set the initial values of
@@ -50,77 +50,71 @@ public class Circle {
 	//----------------------------------------------
 	// getX - returns the value of x
 	//----------------------------------------------
-	public ______ getX() {
-		
-		// Your code goes here	
+	public double getX() {
+		return x;	
 	}
 	
 
 	//----------------------------------------------
 	// getY - returns the value of y
 	//----------------------------------------------
-	public ______ getY() {
-		
-		// Your code goes here	
+	public double getY() {
+		return y;
 	}
 	
 	//----------------------------------------------
 	// getRadius - returns the value of radius
 	//----------------------------------------------
-	public ______ getRadius() {
-		
-		// Your code goes here	
+	public double getRadius() {
+		return radius;	
 	}
 
 	//----------------------------------------------
 	// setX - assigns a new value to x
 	//----------------------------------------------
-	public ______ setX(_______________) {
-		
-		// Your code goes here	
+	public void setX(double x) {
+		this.x = x;
 	}
 	
 
 	//----------------------------------------------
 	// setY - assigns a new value to y
 	//----------------------------------------------
-	public ______ setY(_______________) {
-		
-		// Your code goes here	
+	public void setY(double y) {
+		this.y = y;	
 	}	
 	
 	
 	//----------------------------------------------
 	// setRadius - assigns a new value to radius
 	//----------------------------------------------
-	public ______ setRadius(_______________) {
-		
-		// Your code goes here	
+	public void setRadius(double radius) {
+		if (radius>0) this.radius = radius;
 	}
 	
 	//--------------------------------------------------------
 	// diameter - calculates the diameter of the circle
 	//--------------------------------------------------------
-	public ______ diameter() {
-		
-		// Your code goes here	
+	public double diameter() {
+		double diameter = radius * 2;
+		return diameter;
 	}
 	
 
 	//--------------------------------------------------------
 	// area - returns the area of the circle
 	//--------------------------------------------------------
-	public ______ area() {
-		
-		// Your code goes here	
+	public double area() {
+		double area = Math.PI * Math.pow(radius, 2);
+		return area;
 	}
 
 	//--------------------------------------------------------
 	// perimeter - returns the perimeter of the circle
 	//--------------------------------------------------------
-	public ______ perimeter() {
-		
-		// Your code goes here	
+	public double perimeter() {
+		double perimeter = Math.PI * 2 * radius;
+		return perimeter;
 	}
 	
 	//--------------------------------------------------------
@@ -128,9 +122,17 @@ public class Circle {
 	//                is 1 and its center is (0,0) and false
 	//      	      otherwise.
 	//--------------------------------------------------------
-	public ______ isUnitCircle() {
-		
-		// Your code goes here	
+	public boolean isUnitCircle() {
+		if (radius == 1 && Math.abs(x)+Math.abs(y) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean equals(Circle anotherCircle) {
+		boolean equalCircles = ((this.radius == anotherCircle.radius) && (this.x == anotherCircle.x) && (this.y == anotherCircle.y)) ? true : false;
+		return equalCircles;
 	}
 	
 	
@@ -140,9 +142,9 @@ public class Circle {
 	//            center:(x,y)
 	//            radius: r
 	//--------------------------------------------------------
-	public ______ toString() {
-		
-		// Your code goes here	
+	public String toString(double radius, double x, double y) {
+		String circleString = "center:(" + x + "," + y + ")\nradius: " + radius;
+		return circleString;
 	}
 
 }

@@ -56,9 +56,11 @@ public class CircleTester{
 		
 		// print circle1 characteristics (center and radius), use a statement similar 
 		// to the previous println statements. Note that is not necessary to call
-		//the method toString, why?
+		// the method toString, why?
+		
 		
 		// set the circle2 radius to 5.3
+		circle2.setRadius(5.3);
 		
 		// print circle2 characteristics (center and radius), use a statement similar to the first and
 		// second println statements
