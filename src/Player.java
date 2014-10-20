@@ -24,14 +24,72 @@
 
 public class Player {
 	
-	/*
+	/**
 	 * Instance Variables
 	 */
-	private int xCoord;
-	private int yCoord;
-	
 	private Lamp theLamp;
 	private Key theKey;
-	
+	private int xCoord;
+	private int yCoord;
 
+
+	// GETTERS AND SETTERS
+	
+	/**
+	 * @return the theLamp
+	 */
+	public Lamp getLamp() {
+		return theLamp;
+	}
+
+	/**
+	 * @param theLamp the theLamp to set
+	 */
+	public void setLamp(Lamp theLamp) {
+		this.theLamp = theLamp;
+	}
+
+	/**
+	 * @return the theKey
+	 */
+	public Key getKey() {
+		return theKey;
+	}
+
+	/**
+	 * @param theKey the theKey to set
+	 */
+	public void setKey(Key theKey) {
+		this.theKey = theKey;
+	}
+
+	/**
+	 * @return the xCoord
+	 */
+	public int getxCoord() {
+		return xCoord;
+	}
+
+	/**
+	 * @param xCoord the xCoord to set
+	 */
+	public void setxCoord(int xCoord) {
+		this.xCoord = xCoord;
+	}
+
+	/**
+	 * @return the yCoord
+	 */
+	public int getyCoord() {
+		return yCoord;
+	}
+
+	/**
+	 * @param yCoord the yCoord to set
+	 */
+	public void setyCoord(int yCoord) {
+		this.yCoord = yCoord;
+	}
+	
+	
 }

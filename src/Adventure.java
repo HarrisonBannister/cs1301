@@ -27,6 +27,8 @@ import java.util.Scanner;
 public class Adventure {
 
 	public static void main(String[] args) {
+		
+		Player player = new Player();
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to UGA Adventures: Episode 1\n"+
@@ -34,5 +36,17 @@ public class Adventure {
 							"By: Harrison Bannister");
 
 	}
+	
+	public static boolean checkForValidInput(String playerInput) {
+		if (!(playerInput.equalsIgnoreCase("get lamp")) && !(playerInput.equalsIgnoreCase("light lamp"))&&
+				!(playerInput.equalsIgnoreCase("north"))&& !(playerInput.equalsIgnoreCase("south"))&&
+				!(playerInput.equalsIgnoreCase("east")) && !(playerInput.equalsIgnoreCase("west"))&&
+				!(playerInput.equalsIgnoreCase("get lamp"))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 
 }

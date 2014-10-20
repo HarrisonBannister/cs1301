@@ -1,5 +1,6 @@
 import java.lang.String;
-/*
+
+/**
 * Chest.java
 * Author: Harrison Bannister
 * Submission Date: [Submission date here]
@@ -29,7 +30,7 @@ public class Chest {
 	 * Instance variables go here, you're responsible for choosing
 	 * which ones are needed and naming them
 	 */
-	private String contents = "lol";
+	private String contents;
 	private boolean isLocked;
 
 
@@ -53,6 +54,8 @@ public class Chest {
 	public boolean isLocked() {
 		return isLocked;
 	}
+	
+	// GETTERS AND SETTERS
 	
 	/**
 	 * Set the contents of the chest to this string.  You should not need to call

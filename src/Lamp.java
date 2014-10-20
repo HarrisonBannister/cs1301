@@ -29,18 +29,20 @@ public class Lamp {
 	 * choosing and naming them.
 	 */
 	private boolean isLit;
+	
+	// GETTERS AND SETTERS
 
 	/**
 	 * @return the lighting status
 	 */
-	public boolean isLit() {
+	public boolean checkForLight() {
 		return isLit;
 	}
 
 	/**
 	 * @param lighting status of the lamp to be set
 	 */
-	public void setLit(boolean isLit) {
+	public void setLight(boolean isLit) {
 		this.isLit = isLit;
 	}
 	
