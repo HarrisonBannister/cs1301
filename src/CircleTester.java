@@ -57,23 +57,39 @@ public class CircleTester{
 		// print circle1 characteristics (center and radius), use a statement similar 
 		// to the previous println statements. Note that is not necessary to call
 		// the method toString, why?
-		
+		// System.out.println("Center: ("+circle1.getX()+","+circle1.getY()+") Radius: "+circle1.getRadius());
+		System.out.println("circle1="+circle1);
 		
 		// set the circle2 radius to 5.3
 		circle2.setRadius(5.3);
 		
 		// print circle2 characteristics (center and radius), use a statement similar to the first and
 		// second println statements
+		// System.out.println("Center: ("+circle1.getX()+","+circle1.getY()+") Radius: "+circle1.getRadius());
+		System.out.println("circle2="+circle2);
 		
 		// print circle1 diameter, area and perimeter
+		System.out.println("Diameter: "+circle1.getDiameter()+"\nArea: "+circle1.getArea()+"\nPerimeter: "+circle1.getPerimeter());
 		
 		// print circle2 diameter, area and perimeter
+		System.out.println("Diameter: "+circle2.getDiameter()+"\nArea: "+circle2.getArea()+"\nPerimeter: "+circle2.getPerimeter());
 		
 		// display whether circle1 is a unit circle
+		if (circle1.isUnitCircle() == true) {
+			System.out.println("Circle 1 is a unit circle.");
+		} else {
+			System.out.println("Circle 1 is not a unit circle.");
+		}
 		
 		// display whether circle2 is a unit circle
+		if (circle2.isUnitCircle() == true) {
+			System.out.println("Circle 2 is a unit circle.");
+		} else {
+			System.out.println("Circle 2 is not a unit circle.");
+		}
 		
 		// your additional tests should be placed below here
+		
 				
 	}
 	

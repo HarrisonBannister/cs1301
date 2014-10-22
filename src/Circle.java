@@ -40,7 +40,7 @@ public class Circle {
 	//                    the instance variables
 	//                    for this circle
 	//----------------------------------------------	
-	public Circle(double x, double y,double  radius) {
+	public Circle(double x, double y, double radius) {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;  	   	
@@ -95,7 +95,7 @@ public class Circle {
 	//--------------------------------------------------------
 	// diameter - calculates the diameter of the circle
 	//--------------------------------------------------------
-	public double diameter() {
+	public double getDiameter() {
 		double diameter = radius * 2;
 		return diameter;
 	}
@@ -104,7 +104,7 @@ public class Circle {
 	//--------------------------------------------------------
 	// area - returns the area of the circle
 	//--------------------------------------------------------
-	public double area() {
+	public double getArea() {
 		double area = Math.PI * Math.pow(radius, 2);
 		return area;
 	}
@@ -112,7 +112,7 @@ public class Circle {
 	//--------------------------------------------------------
 	// perimeter - returns the perimeter of the circle
 	//--------------------------------------------------------
-	public double perimeter() {
+	public double getPerimeter() {
 		double perimeter = Math.PI * 2 * radius;
 		return perimeter;
 	}
@@ -130,9 +130,33 @@ public class Circle {
 		}
 	}
 	
+	// Checks if circle and another instance of circle are the same
 	public boolean equals(Circle anotherCircle) {
-		boolean equalCircles = ((this.radius == anotherCircle.radius) && (this.x == anotherCircle.x) && (this.y == anotherCircle.y)) ? true : false;
+		boolean equalCircles = (this.getRadius() == anotherCircle.getRadius() && (this.getX() == anotherCircle.getX()) && (this.getY() == anotherCircle.getY())) ? true : false;
 		return equalCircles;
+	}
+	
+	// Checks if circle and another instance of circle's are concentric
+	public boolean isConcentric(Circle anotherCircle) {
+		boolean concentricCircles = ((this.getX() == anotherCircle.getX()) && (this.getY() == anotherCircle.getY())) ? true : false;
+		return concentricCircles;
+	}
+	
+	// Finds the distance between the center of a circle and the center of another instance of a circle
+	public double distance(Circle anothercircle) {
+		double distance = Math.pow((this.getX()-anothercircle.getX()), 2) + Math.pow((this.getY()-anothercircle.getY()), 2);
+		distance = Math.sqrt(distance);
+		return distance;
+	}
+	
+	// Checks if circle and another instance of circle's area intersects
+	public boolean intersects(Circle anothercircle) {
+		double radiusSum = this.getRadius() + anothercircle.getRadius();
+		if (this.distance(anothercircle)<radiusSum) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	
