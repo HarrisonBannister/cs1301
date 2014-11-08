@@ -34,16 +34,15 @@ public class Player {
 
 
 	// GETTERS AND SETTERS
-	
 	/**
-	 * @return the theLamp
+	 * @return theLamp
 	 */
 	public Lamp getLamp() {
 		return theLamp;
 	}
 
 	/**
-	 * @param theLamp the theLamp to set
+	 * @param theLamp to set
 	 */
 	public void setLamp(Lamp theLamp) {
 		this.theLamp = theLamp;
@@ -57,7 +56,7 @@ public class Player {
 	}
 
 	/**
-	 * @param theKey the theKey to set
+	 * @param the theKey to set
 	 */
 	public void setKey(Key theKey) {
 		this.theKey = theKey;

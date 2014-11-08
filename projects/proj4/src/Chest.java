@@ -56,7 +56,6 @@ public class Chest {
 	}
 	
 	// GETTERS AND SETTERS
-	
 	/**
 	 * Set the contents of the chest to this string.  You should not need to call
 	 * this method in your program (though you have to implement it anyway).

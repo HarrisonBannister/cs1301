@@ -1,0 +1,17 @@
+import java.util.Strin;
+
+public class ProcedureTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "test";
+		ProcedureTester.spaceRemover(test);
+		System.out.println(test);
+
+	}
+	
+	public static void spaceRemover(String arg) {
+		arg.replaceAll("es", "");
+	}
+
+}

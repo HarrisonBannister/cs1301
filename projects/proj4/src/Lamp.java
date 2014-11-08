@@ -25,24 +25,22 @@
 public class Lamp {
 
 	/*
-	 * Instance variables and methods go here, you're responsible for 
-	 * choosing and naming them.
+	 * Instance variables
 	 */
 	private boolean isLit;
 	
 	// GETTERS AND SETTERS
-
 	/**
-	 * @return the lighting status
+	 * @return the lighting status (returns true if lamp is lit)
 	 */
-	public boolean checkForLight() {
+	public boolean getLightStatus() {
 		return isLit;
 	}
 
 	/**
 	 * @param lighting status of the lamp to be set
 	 */
-	public void setLight(boolean isLit) {
+	public void setLightStatus(boolean isLit) {
 		this.isLit = isLit;
 	}
 	

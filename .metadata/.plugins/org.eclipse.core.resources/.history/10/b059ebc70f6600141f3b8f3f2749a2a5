@@ -1,0 +1,17 @@
+
+public class MoneyCalc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// currency denomination values
+		final double ONES_VALUE = .01;
+		final double ONES_VALUE = .05;
+		final double ONES_VALUE = .1;
+		final double ONES_VALUE = .25;
+		final double ONES_VALUE = 1.00;
+		final double ONES_VALUE = 1.00;
+
+	}
+
+}

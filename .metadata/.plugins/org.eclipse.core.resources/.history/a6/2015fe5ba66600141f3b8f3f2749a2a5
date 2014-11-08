@@ -1,0 +1,11 @@
+
+public class ProcedureTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "test";
+		
+
+	}
+
+}

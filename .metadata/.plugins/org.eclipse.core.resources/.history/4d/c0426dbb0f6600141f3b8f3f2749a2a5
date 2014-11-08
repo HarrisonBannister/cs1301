@@ -1,0 +1,10 @@
+
+public class MoneyCalc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final double ONES_VALUE = 1.00;
+
+	}
+
+}
