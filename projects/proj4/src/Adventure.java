@@ -27,60 +27,67 @@ import java.util.Scanner;
 public class Adventure {
 
 	public static void main(String[] args) {
-		
-		// TODO Auto-generated method stub
-		// Game startup new map / setting up player
-		Player player = new Player();
-		Map map = new Map();
-		player = Adventure.startNewGame(player);
+		// Game startup
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Welcome to UGA Adventures: Episode 1\n"+
 							"The Adventure of the Cave of Redundancy Adventure\n"+
-							"By: Harrison Bannister");
+							"By: Harrison Bannister\n");
 		
-		// main game loop
-		// variables necessary for loop
+		// new map and player objects
+		Player player = new Player();
+		Map map = new Map();
+		player = Adventure.startNewGame(player);
+		// objects necessary to start game loops
 		String playerInput = "";
 		Room currentRoom = map.getRoom(0,0);
 		Lamp lamp = new Lamp();
+		Key key = new Key();
+		Chest chest = new Chest();
 		
-			// set variables for inner game loop
-			currentRoom = map.getRoom(player.getxCoord(), player.getyCoord());
-			lamp = player.getLamp();
-			
-			// inner game loop
-			while (currentRoom.equals(null) == false) {
-				// set room variables upon entry
+		// variables to check if room has changed for printing description
+		int lastx = 0;
+		int lasty = 0;
+		// MAIN GAME LOOP
+			while (!(currentRoom == null)) {
+				// sets variable for room upon entry
+				currentRoom = map.getRoom(player.getxCoord(), player.getyCoord());
 				lamp = currentRoom.getLamp();
-				Key key = currentRoom.getKey();
-				Chest chest = currentRoom.getChest();
-				// look executed once upon entry
+				key = currentRoom.getKey();
+				chest = currentRoom.getChest();
+				
 				Adventure.look(player,lamp,key,chest,currentRoom);
 				
 				// initial command before loop
-				playerInput = sc.next();
+				playerInput = sc.nextLine();
 				playerInput = Adventure.filterPlayerInput(playerInput);
-				// as long as the player does not enter a movement command they stay in the room
+				// stays in the below loop until a valid command to leave is entered
 				while (!(playerInput.equalsIgnoreCase("north")) && !(playerInput.equalsIgnoreCase("south")) &&
 					   !(playerInput.equalsIgnoreCase("east")) && !(playerInput.equalsIgnoreCase("west"))) {
 					
 					// takes commands until player decides to move from room
 					if (playerInput.equalsIgnoreCase("look")) {
 						Adventure.look(player, lamp, key, chest, currentRoom);
+						
 					} else if (playerInput.equalsIgnoreCase("get lamp")) {
-						Adventure.getLamp(player, lamp, map, currentRoom);
+						player = Adventure.getLamp(player, lamp, map, currentRoom);
+						if (!(currentRoom.getLamp() ==  null)) currentRoom = Adventure.clearLamp(currentRoom);
+						
 					} else if (playerInput.equalsIgnoreCase("get key")) {
-						Adventure.getKey(player, key, currentRoom);
+						player = Adventure.getKey(player, key, currentRoom);
+						if (!(currentRoom.getKey() ==  null)) currentRoom = Adventure.clearKey(currentRoom, key);
+					
 					} else if (playerInput.equalsIgnoreCase("light lamp")) {
-						Adventure.lightLamp(player, lamp);
+						lamp = Adventure.lightLamp(player, lamp);
+					
 					} else if (playerInput.equalsIgnoreCase("unlock chest")) {
-						Adventure.unlockChest(player, chest, currentRoom);
+						chest = Adventure.unlockChest(player, chest, currentRoom);
+					
 					} else {
 						Adventure.openChest(player, chest, currentRoom);
 					}
 					
 					// takes next command
-					playerInput = sc.next();
+					playerInput = sc.nextLine();
 					playerInput = Adventure.filterPlayerInput(playerInput);
 				}
 				
@@ -101,15 +108,10 @@ public class Adventure {
 		player.setyCoord(0);
 		return player;
 	}
-	public static Map createNewMap(Map map) {
-		Map newMap = new Map();
-		map = newMap;
-		return map;
-	}
-	// returns true if game if player is in trouble, they're next move loses the game unless they have a lamp
+	// returns true if game if player is in trouble, their next move loses the game unless they have a lamp
 	public static boolean isPlayerInTrouble(Player player, Lamp lamp, Room currentRoom) {
 		// 
-		if (currentRoom.isDark() && (lamp.equals(null) || lamp.getLightStatus() == false)) {
+		if (currentRoom.isDark() && (lamp == null || lamp.getLightStatus() == false)) {
 			System.out.println("You have stumbled into a passing grue and have been eaten.");
 			return true;
 		} else {
@@ -125,14 +127,14 @@ public class Adventure {
 		 */
 	public static Chest unlockChest(Player player, Chest chest, Room currentRoom) {
 		Key key = player.getKey();
-		if (chest.equals(null) == false && key.equals(null) == false && chest.isLocked() == true) {
+		if (!(chest == null) && !(key == null) && chest.isLocked() == true) {
 			System.out.println("OK");
 			key.use(chest);
 			return chest;
-		} else if (chest.equals(null) == false && chest.isLocked() == false) {
+		} else if (!(chest == null) && chest.isLocked() == false) {
 			System.out.println("The chest is unlocked. Open it!");
 			return chest;
-		} else if (chest.equals(null) == false && key.equals(null) == true) {
+		} else if (!(chest == null) && key == null) {
 			System.out.println("Need a key to do any unlocking!");
 			return chest;
 		} else {
@@ -142,10 +144,10 @@ public class Adventure {
 	}
 	
 	public static void openChest(Player player, Chest chest, Room currentRoom) {
-		if (chest.equals(null) == false && chest.isLocked() == false) {
+		if (!(chest == null) && chest.isLocked() == false) {
 			System.out.println("The chest contains " + chest.getContents() + ".");
 			System.exit(0);
-		} else if (chest.equals(null) == false && chest.isLocked() == true){
+		} else if (!(chest == null) && chest.isLocked() == true){
 			System.out.println("The chest is locked");
 		} else {
 			System.out.println("No chest present");
@@ -153,11 +155,11 @@ public class Adventure {
 	}
 	
 	public static Room clearKey(Room currentRoom, Key key) {
-		if (key.equals(null) == false) currentRoom.clearKey();
+		currentRoom.clearKey();
 		return currentRoom;
 	}
 	public static Player getKey(Player player, Key key, Room currentRoom) {
-		if (key.equals(null) == false) {
+		if (!(key == null)) {
 			System.out.println("OK");
 			player.setKey(key);
 			return player;
@@ -170,13 +172,13 @@ public class Adventure {
 		 * Movement and Looking
 		 */
 	public static void look(Player player, Lamp lamp, Key key, Chest chest, Room currentRoom) {
-		if (currentRoom.isDark() && (lamp.equals(null) || lamp.getLightStatus() == false)) {
+		if (currentRoom.isDark() && (lamp == null || lamp.getLightStatus() == false)) {
 			System.out.println("It is pitch black, you can't see anything. You may be eaten by a grue!");
 		} else {
 			System.out.println(currentRoom.getDescription());
-			if (lamp.equals(null) == false) System.out.println("There is an old oil lamp here that was made long ago.");
-			if (key.equals(null) == false) System.out.println("You see the outline of a key on a dusty shelf that's covered in dust.");;
-			if (chest.equals(null) == false) System.out.println("There is a large, wooden, massive, oaken chest here with the word 'CHEST' carved into it.");;
+			if (!(lamp == null)) System.out.println("There is an old oil lamp here that was made long ago.");
+			if (!(key == null)) System.out.println("You see the outline of a key on a dusty shelf that's covered in dust.");
+			if (!(chest == null)) System.out.println("There is a large, wooden, massive, oaken chest here with the word 'CHEST' carved into it.");
 		}
 		
 	}
@@ -222,12 +224,12 @@ public class Adventure {
 		/*
 		 * Lamp Commands
 		 */
-	public static Room clearLamp(Room currentRoom, Lamp lamp) {
-		if (lamp.equals(null) == false) currentRoom.clearLamp();
+	public static Room clearLamp(Room currentRoom) {
+		currentRoom.clearLamp();
 		return currentRoom;
 	}
 	public static Player getLamp(Player player, Lamp lamp, Map map, Room currentRoom) {
-		if (lamp.equals(null) == false) {
+		if (!(lamp == null)) {
 			System.out.println("OK");
 			player.setLamp(lamp);
 			return player;
@@ -239,7 +241,7 @@ public class Adventure {
 	
 	public static Lamp lightLamp(Player player, Lamp lamp) {
 		lamp = player.getLamp();
-		if (lamp.equals(null) == false) {
+		if (!(lamp == null)) {
 			System.out.println("OK");
 			lamp.setLightStatus(true);
 			return lamp;
@@ -256,7 +258,8 @@ public class Adventure {
 		if (!(playerInput.equalsIgnoreCase("get lamp")) && !(playerInput.equalsIgnoreCase("light lamp"))&&
 				!(playerInput.equalsIgnoreCase("north"))&& !(playerInput.equalsIgnoreCase("south"))&&
 				!(playerInput.equalsIgnoreCase("east")) && !(playerInput.equalsIgnoreCase("west"))&&
-				!(playerInput.equalsIgnoreCase("get lamp"))) {
+				!(playerInput.equalsIgnoreCase("look")) && !(playerInput.equalsIgnoreCase("get key"))&&
+				!(playerInput.equalsIgnoreCase("unlock chest"))&& !(playerInput.equalsIgnoreCase("open chest"))) {
 			return true;
 		} else {
 			return false;
@@ -269,19 +272,9 @@ public class Adventure {
 		while (Adventure.playerInputIsValid(playerInput)) {
 			System.out.println("I'm sorry I don't know how to do that.");
 			System.out.println("Please enter a valid command:");
-			playerInput = sc.next();
+			playerInput = sc.nextLine();
 		}
-		sc.close();
 		return playerInput;
 	}
-	
-	/*
-	 * Methods to check for empty objects, all return true if empty
-	 */
-	public boolean isNull(Lamp lamp) {
-		return true;
-	}
-	public boolean isNull(Key key) {
-		return true;
-	}
+
 }
