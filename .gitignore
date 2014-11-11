@@ -8,6 +8,11 @@
 *.jar
 *.war
 *.ear
+.metadata
+.recommenders
+cs1301\projects\proj4\bin
+cs1301\projects\proj4\.settings
+cs1301\projects\proj4\.classpath
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
