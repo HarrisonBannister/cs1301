@@ -1,13 +1,10 @@
 ﻿/*
- * BallTester.java
- * A program that tests the Ball class to make
- * sure that it is working correctly. 
+ * BallTester.java A program that tests the Ball class to make sure that it is working correctly.
  */
 public class BallTester {
   public static void main(String[] args) {
     Ball ball1 = new Ball(100, 100, 5, 1, 1, 500, 200);
-    System.out
-        .println("Test #1: constructor Ball(int, int,int ,int ,int, int, int ) and getters.");
+    System.out.println("Test #1: constructor Ball(int, int,int ,int ,int, int, int ) and getters.");
     System.out.println("ball1:" + ball1);
     // ///////////////////////////////// Test 1
     // /////////////////////////////////////
@@ -43,14 +40,12 @@ public class BallTester {
     if (ball1.getXDir() == 1 || ball1.getXDir() == -1) {
       System.out.println("the x-direction of ball1 is correct.");
     } else {
-      System.out
-          .println("Test #1: the x-direction of ball1 is incorrect!");
+      System.out.println("Test #1: the x-direction of ball1 is incorrect!");
     }
     if (ball1.getYDir() == 1 || ball1.getYDir() == -1) {
       System.out.println("the y-direction of ball1 is correct.");
     } else {
-      System.out
-          .println("Test #1: the y-direction of ball1 is incorrect!");
+      System.out.println("Test #1: the y-direction of ball1 is incorrect!");
     }
     // ///////////////////////////////// Test 2
     // /////////////////////////////////////
@@ -90,14 +85,12 @@ public class BallTester {
     if (ball2.getXDir() == 1 || ball2.getXDir() == -1) {
       System.out.println("the x-direction of ball2 is correct.");
     } else {
-      System.out
-          .println("Test #2: the x-direction of ball2 is incorrect!");
+      System.out.println("Test #2: the x-direction of ball2 is incorrect!");
     }
     if (ball1.getYDir() == 1 || ball1.getYDir() == -1) {
       System.out.println("the y-direction of ball2 is correct.");
     } else {
-      System.out
-          .println("Test #2: the y-direction of ball2 is incorrect!");
+      System.out.println("Test #2: the y-direction of ball2 is incorrect!");
     }
     // ///////////////////////////////// Test 3
     // /////////////////////////////////////
@@ -113,8 +106,7 @@ public class BallTester {
     if (ball1.getColor() == color_temp) {
       System.out.println("the setting of the color is correct.");
     } else {
-      System.out
-          .println("Test #3: the setting of the color is incorrect!");
+      System.out.println("Test #3: the setting of the color is incorrect!");
     }
     // ///////////////////////////////// Test 4
     // /////////////////////////////////////
@@ -149,8 +141,7 @@ public class BallTester {
     if (ball1.getSpeed() > 0 && ball1.getSpeed() <= 5) {
       System.out.println("The method increase speed is correct");
     } else {
-      System.out
-          .println("Test #5: The method increase speed is incorrect!");
+      System.out.println("Test #5: The method increase speed is incorrect!");
     }
     // ///////////////////////////////// Test 6
     // /////////////////////////////////////
@@ -165,8 +156,7 @@ public class BallTester {
     if (ball1.getSpeed() > 0 && ball1.getSpeed() <= 5) {
       System.out.println("The method decrease speed is correct");
     } else {
-      System.out
-          .println("Test #6: The method decrease speed is incorrect!");
+      System.out.println("Test #6: The method decrease speed is incorrect!");
     }
     // ///////////////////////////////// Test 7
     // /////////////////////////////////////
@@ -200,22 +190,19 @@ public class BallTester {
     if (ball1.getX() == 105) {
       System.out.println("move of ball1 in the x direction is correct.");
     } else {
-      System.out
-          .println("Test #8: move of ball1 in the x direction is incorrect!");
+      System.out.println("Test #8: move of ball1 in the x direction is incorrect!");
     }
     if (ball1.getY() == 105) {
       System.out.println("move of ball1 in the y direction is correct.");
     } else {
-      System.out
-          .println("Test #8: move of ball1 in the y direction is incorrect!");
+      System.out.println("Test #8: move of ball1 in the y direction is incorrect!");
     }
     // ///////////////////////////////// Test 9
     // /////////////////////////////////////
     // //////////////////////////////Testing
     // Move()//////////////////////////////////
     // /////////////////////////////////////////////////////////////////////////////
-    System.out
-        .println("\nTest #9: fliping the direction of the ball and move.");
+    System.out.println("\nTest #9: fliping the direction of the ball and move.");
     ball1 = new Ball(100, 100, 5, 1, 1, 500, 200);
     ball1.flipXDir();
     ball1.flipYDir();
@@ -223,14 +210,12 @@ public class BallTester {
     if (ball1.getX() == 95) {
       System.out.println("move of ball1 in the x direction is correct.");
     } else {
-      System.out
-          .println("Test #9: move of ball1 in the x direction is incorrect!");
+      System.out.println("Test #9: move of ball1 in the x direction is incorrect!");
     }
     if (ball1.getY() == 95) {
       System.out.println("move of ball1 in the y direction is correct.");
     } else {
-      System.out
-          .println("Test #9: move of ball1 in the y direction is incorrect!");
+      System.out.println("Test #9: move of ball1 in the y direction is incorrect!");
     }
     // ///////////////////////////////// Test 10
     // ////////////////////////////////////
@@ -245,8 +230,7 @@ public class BallTester {
     if (ball1.getYDir() == 1) {
       System.out.println("bouncing at the bottom is correct.");
     } else {
-      System.out
-          .println("Test #10: bouncing at the bottom is incorrect!");
+      System.out.println("Test #10: bouncing at the bottom is incorrect!");
     }
     // ///////////////////////////////// Test 11
     // ////////////////////////////////////

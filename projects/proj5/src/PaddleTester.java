@@ -1,7 +1,6 @@
 ﻿/*
- * PaddleTester.java
- * A program that tests the Paddle class to make
- * sure that it is working correctly.
+ * PaddleTester.java A program that tests the Paddle class to make sure that it is working
+ * correctly.
  */
 public class PaddleTester {
   public static void main(String[] args) {
@@ -126,8 +125,7 @@ public class PaddleTester {
     } else {
       System.out.println("single paddle move to the right is correct");
     }
-    System.out
-        .println("\nTest #7: move to the right several times but never outside the court");
+    System.out.println("\nTest #7: move to the right several times but never outside the court");
     paddle.center();
     paddle.setSpeed(8);
     paddle.setDirection(-1);
@@ -136,23 +134,20 @@ public class PaddleTester {
     }
     if (paddle.getX() + paddle.getWidth() > 400) {
       error = true;
-      System.out
-          .println("The paddle move to the right outside the court.");
+      System.out.println("The paddle move to the right outside the court.");
     } else {
       System.out.println("the paddle move to the right is correct");
     }
     paddle.center();
     paddle.setSpeed(8);
     paddle.setDirection(1);
-    System.out
-        .println("\nTest #8: move to the left several times but never outside the court");
+    System.out.println("\nTest #8: move to the left several times but never outside the court");
     for (int i = 1; i < 100; i++) {
       paddle.move();
     }
     if (paddle.getX() < 0) {
       error = true;
-      System.out
-          .println("The paddle move to the left outside the court.");
+      System.out.println("The paddle move to the left outside the court.");
     } else {
       System.out.println("the paddle move to the left is correct");
     }
@@ -165,12 +160,10 @@ public class PaddleTester {
     paddle.setDirection(0);
     Ball aBall = new Ball(250, 17, 15, 400, 200);
     if (paddle.isCollision(aBall)) {
-      System.out
-          .println("The paddle detects the collision with the ball.");
+      System.out.println("The paddle detects the collision with the ball.");
     } else {
       error = true;
-      System.out
-          .println("The paddle does not detects the collision with the ball.");
+      System.out.println("The paddle does not detects the collision with the ball.");
     }
     if (error) {
       System.out.println("The method isCollision has errors.");
