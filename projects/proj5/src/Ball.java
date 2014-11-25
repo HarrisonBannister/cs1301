@@ -1,6 +1,9 @@
-﻿public class Ball {
+﻿import java.util.Random;
+
+public class Ball {
+
   /*
-   * Instance Variables
+   * Instance variables
    */
   private int x; // represents x-coordinate of ball's center
   private int y; // represents the y-coordinate of the ball's center
@@ -9,36 +12,130 @@
   private int speed; // current speed of the ball
   private int xDir; // represents the direction of the ball's movement in the x direction. It will
                     // always take the value 1 or -1. 1 will mean right, -1 will mean left
+
   private int yDir; // represents the direction of the ball's movement in the y direction. It will
                     // always take the value 1 or -1. 1 will mean up, -1 will mean down
+
   private int courtWidth; // represents width of the court in which the ball is rolling
-  private int courtHeight; // represents width of the court in which the ball is rolling
+  private int courtHeight; // represents height of the court in which the ball is rolling
+
 
   public Ball(int x, int y, int speed, int xDir, int yDir, int courtWidth, int courtHeight) {
-    if (xDir != 1 && xDir != -1)
+    Random rand = new Random();
+
+    // sets radius to random integer b/t 15 and 20
+    this.radius = rand.nextInt(6) + 15;
+
+    // sets default court width if value passed is less than the diameter of the ball
+    if (this.radius * 2 >= courtWidth) {
+      this.courtWidth = 700;
+    } else {
+      this.courtWidth = courtWidth;
+    }
+    // sets default court height if value passed is less than the diameter of the ball
+    if (this.radius * 2 >= courtHeight) {
+      this.courtHeight = 300;
+    } else {
+      this.courtHeight = courtHeight;
+    }
+
+    // sets color to random integer b/t 0 and 6
+    this.setColor(rand.nextInt(7));
+
+    // sets default x and y direction of the ball if value passed is not valid
+    if (xDir != 1 && xDir != -1) {
       this.xDir = 1;
-    if (xDir != 1 && xDir != -1)
+    } else {
+      this.xDir = xDir;
+    }
+    if (yDir != 1 && yDir != -1) {
       this.yDir = 1;
-    if (speed < 0)
+    } else {
+      this.yDir = yDir;
+    }
+
+    // sets default speed value if it is less than 0
+    if (speed < 1 || speed > 5) {
       this.speed = 1;
-    this.courtWidth = 700;
-    this.courtHeight = 300;
-    this.x = courtWidth / 2;
-    this.y = courtHeight / 2;
+    } else {
+      this.speed = speed;
+    }
+
+    // sets default x and y position of the ball if value passed is not valid
+    if (x > 0 + this.radius && x < this.courtWidth - this.radius) {
+      this.x = x;
+    } else {
+      this.x = this.courtWidth / 2;
+    }
+    // sets default x position of the ball if value passed is not valid
+    if (y > 0 + this.radius && y < this.courtHeight - this.radius) {
+      this.y = y;
+    } else {
+      this.y = this.courtHeight / 2;
+    }
   }
 
-  public Ball(int x, int y, int radius, int courtWidth, int courtHeight) {}
+  public Ball(int x, int y, int radius, int courtWidth, int courtHeight) {
+    Random rand = new Random();
+
+    // sets color to random int b/t 0 and 6
+    this.setColor(rand.nextInt(7));
+
+    // sets default speed value to 1
+    this.speed = 1;
+
+    // sets default x and y direction of the ball if value passed is not valid
+    if (this.xDir != 1 && this.xDir != -1) {
+      this.xDir = 1;
+    }
+    if (this.yDir != 1 && this.yDir != -1) {
+      this.yDir = 1;
+    }
+
+    // sets radius to 15 if value assigned is less than 15
+    if (radius < 15 || radius > 20) {
+      this.radius = 15;
+    } else {
+      this.radius = radius;
+    }
+
+    // sets default court width if value passed is less than the diameter of the ball
+    if (this.radius * 2 >= courtWidth) {
+      this.courtWidth = 700;
+    } else {
+      this.courtWidth = courtWidth;
+    }
+    // sets default court height if value passed is less than the diameter of the ball
+    if (this.radius * 2 >= courtHeight) {
+      this.courtHeight = 300;
+    } else {
+      this.courtHeight = courtHeight;
+    }
+
+    // sets default x and y position of the ball if value passed is not valid
+    if (x > 0 + this.radius && x < this.courtWidth - this.radius) {
+      this.x = x;
+    } else {
+      this.x = this.courtWidth / 2;
+    }
+    // sets default x position of the ball if value passed is not valid
+    if (y > 0 + this.radius && y < this.courtHeight - this.radius) {
+      this.y = y;
+    } else {
+      this.y = this.courtHeight / 2;
+    }
+  }
 
   public int getRadius() {
     return radius;
   }
 
   public int getX() {
-    return x;
+    return this.x;
   }
 
   public int getY() {
-    return y;
+    return this.y;
   }
 
   public int getColor() {
@@ -58,28 +155,134 @@
   }
 
   public void setColor(int color) {
-    this.color = color;
+    if (color >= 0 && color <= 6) {
+      this.color = color;
+    }
   }
 
   public void setX(int x) {
-    this.x = x;
+    if (x >= 0 + this.radius && x <= this.courtWidth - this.radius) {
+      this.x = x;
+    }
   }
 
   public void setY(int y) {
-    this.y = y;
+    if (y >= 0 + this.radius && y <= this.courtHeight - this.radius) {
+      this.y = y;
+    }
   }
 
-  public void flipYDir() {}
+  public void flipYDir() {
+    if (this.getYDir() == 1) {
+      this.yDir = -1;
+    } else {
+      this.yDir = 1;
+    }
+  }
 
-  public void flipXDir() {}
+  public void flipXDir() {
+    if (this.getXDir() == 1) {
+      this.xDir = -1;
+    } else {
+      this.xDir = 1;
+    }
+  }
 
-  public void move() {}
+  public void move() {
+    // variable for distance to left or right wall
+    int distanceToXWall = 0;
 
-  public boolean isCollision(Ball anotherBall) {}
+    // if ball is closer to right use "distance to right wall", else use distance to left wall
+    if (this.x > this.courtWidth - this.x) {
+      distanceToXWall = this.courtWidth - this.x;
+    } else {
+      distanceToXWall = this.x - 1;
+    }
 
-  public void increaseSpeed() {}
+    // bounce the ball if radius is less than or equal to the distance of the center to the side
+    // wall
+    if (distanceToXWall < this.radius) {
+      if (this.x > this.courtWidth - this.x) {
+        this.setX(this.x - 1);
+      } else {
+        this.setX(this.x + 1);
+      }
+      this.flipXDir();
+    }
 
-  public void decreaseSpeed() {}
+    int distanceToYWall = 0;
+
+    // if ball is closer to top use "distance to top wall", else use distance to bottom
+    if (this.y > this.courtHeight - this.y) {
+      distanceToYWall = this.courtHeight - this.y;
+    } else {
+      distanceToYWall = this.y - 1;
+    }
+
+    // bounce the ball if radius is less than or equal to the distance of the center to the side
+    // wall
+    if (distanceToYWall < this.radius) {
+      if (this.y > this.courtHeight - this.y) {
+        this.setY(this.y - 1);
+      } else {
+        this.setY(this.y + 1);
+      }
+      this.flipYDir();
+    }
+
+    // moves x direction at speed
+    if (this.xDir == 1) {
+      this.setX(this.x + this.speed);
+    } else {
+      this.setX(this.x - this.speed);
+    }
+
+    // moves y direction at speed
+    if (this.yDir == 1) {
+      this.setY(this.y + this.speed);
+    } else {
+      this.setY(this.y - this.speed);
+    }
+  }
+
+  public boolean isCollision(Ball anotherBall) {
+    /*
+     * // variables to define position of 4 sides another ball int anotherBallTop =
+     * anotherBall.getY() + anotherBall.getRadius(); int anotherBallBottom = anotherBall.getY() -
+     * anotherBall.getRadius(); int anotherBallLeft = anotherBall.getX() - anotherBall.getRadius();
+     * int anotherBallRight = anotherBall.getX() + anotherBall.getRadius();
+     * 
+     * // variables to define position of this ball, the calling ball object int ballTop = this.y +
+     * this.radius; int ballBottom = this.y - this.radius; int ballLeft = this.x - this.radius; int
+     * ballRight = this.x + this.radius;
+     */
+
+    // set variables to find distance between the ball's centers
+    int xDifference = this.x - anotherBall.getX();
+    int yDifference = this.y - anotherBall.getY();
+    double distanceBetweenBalls =
+        Math.sqrt((xDifference * xDifference) + (yDifference * yDifference));
+
+    // if distance between the center of the balls is less than or equal to the sum of their radius,
+    // then they are colliding
+    if (distanceBetweenBalls <= this.radius + anotherBall.getRadius()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public void increaseSpeed() {
+    if (this.getSpeed() < 5) {
+      this.speed += 1;;
+    }
+  }
+
+  public void decreaseSpeed() {
+    if (this.getSpeed() > 1) {
+      this.speed -= 1;;
+    }
+  }
 
   @Override
   public String toString() {

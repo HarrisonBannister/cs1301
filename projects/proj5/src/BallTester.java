@@ -103,6 +103,7 @@ public class BallTester {
     System.out.println("\nTest #3: setColor.");
     int color_temp = ball1.getColor();
     ball1.setColor(-8);
+    System.out.println("Color value" + ball1.getColor());
     if (ball1.getColor() == color_temp) {
       System.out.println("the setting of the color is correct.");
     } else {
@@ -115,9 +116,13 @@ public class BallTester {
     // /////////////////////////////////////////////////////////////////////////////
     System.out.println("\nTest #4: setX and setY.");
     ball1 = new Ball(100, 100, 5, 1, 1, 500, 200);
-    // System.out.println("ball1:" + ball1);
+    System.out.println("x coord: " + ball1.getX());
+    System.out.println("y coord: " + ball1.getY());
+    //System.out.println("ball1:" + ball1);
     ball1.setX(-200);
+    System.out.println("x coord: " + ball1.getX());
     ball1.setY(400);
+    System.out.println("y coord: " + ball1.getY());
     if (ball1.getX() == 100) {
       System.out.println("x-coordinate of ball1 is correct.");
     } else {

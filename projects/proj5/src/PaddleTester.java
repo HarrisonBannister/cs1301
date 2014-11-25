@@ -53,8 +53,7 @@ public class PaddleTester {
       error = true;
       System.out.println("The direction of the paddle is incorrect.");
     }
-    System.out
-        .println("Check the paddle is centered in the court, check its x-coordinate (use the method getX)");
+    paddle.center();
     System.out.println("paddle:" + paddle);
     if (error) {
       System.out.println("constructor Paddle(int) has errors.");
