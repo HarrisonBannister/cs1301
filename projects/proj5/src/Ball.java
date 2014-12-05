@@ -1,6 +1,22 @@
 ﻿import java.util.Random;
 
 public class Ball {
+  /**
+   * Ball.java Author: Harrison Bannister Submission Date: 12/5/14
+   *
+   * Purpose: This program creates the actions and attributes of a ball for a game.
+   *
+   * Statement of Academic Honesty:
+   *
+   * The following code represents my own work. I have neither received nor given inappropriate
+   * assistance. I have not copied or modified code from any source other than the course webpage or
+   * the course textbook. I recognize that any unauthorized assistance or plagiarism will be handled
+   * in accordance with the University of Georgia's Academic Honesty Policy and the policies of this
+   * course. I recognize that my work is based on an assignment created by the Department of
+   * Computer Science at the University of Georgia. Any publishing or posting of source code for
+   * this project is strictly prohibited unless you have written consent from the Department of
+   * Computer Science at the University of Georgia.
+   */
 
   /*
    * Instance variables
@@ -161,13 +177,13 @@ public class Ball {
   }
 
   public void setX(int x) {
-    if (x >= 0 + this.radius && x <= this.courtWidth - this.radius) {
+    if (x >= this.radius && x <= this.courtWidth - this.radius) {
       this.x = x;
     }
   }
 
   public void setY(int y) {
-    if (y >= 0 + this.radius && y <= this.courtHeight - this.radius) {
+    if (y >= this.radius && y <= this.courtHeight - this.radius) {
       this.y = y;
     }
   }
@@ -196,16 +212,16 @@ public class Ball {
     if (this.x > this.courtWidth - this.x) {
       distanceToXWall = this.courtWidth - this.x;
     } else {
-      distanceToXWall = this.x - 1;
+      distanceToXWall = this.x;
     }
 
     // bounce the ball if radius is less than or equal to the distance of the center to the side
     // wall
-    if (distanceToXWall < this.radius) {
+    if (distanceToXWall <= this.radius) {
       if (this.x > this.courtWidth - this.x) {
-        this.setX(this.x - 1);
+        this.setX(this.x - this.speed - 1);
       } else {
-        this.setX(this.x + 1);
+        this.setX(this.x + this.speed + 1);
       }
       this.flipXDir();
     }
@@ -216,20 +232,20 @@ public class Ball {
     if (this.y > this.courtHeight - this.y) {
       distanceToYWall = this.courtHeight - this.y;
     } else {
-      distanceToYWall = this.y - 1;
+      distanceToYWall = this.y;
     }
 
     // bounce the ball if radius is less than or equal to the distance of the center to the side
     // wall
-    if (distanceToYWall < this.radius) {
+    if (distanceToYWall <= this.radius) {
       if (this.y > this.courtHeight - this.y) {
-        this.setY(this.y - 1);
+        this.setY(this.y - this.speed);
       } else {
-        this.setY(this.y + 1);
+        this.setY(this.y + this.speed);
       }
       this.flipYDir();
     }
-
+    
     // moves x direction at speed
     if (this.xDir == 1) {
       this.setX(this.x + this.speed);
